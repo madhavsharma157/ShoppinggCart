@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - GIN_MODE=release
+    volumes:
+      - ./data:/root/data
+    restart: unless-stopped
+
+  # Optional: Add a database service for production
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: ecommerce
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+
+# volumes:
+#   postgres_data:
